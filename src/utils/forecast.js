@@ -12,7 +12,10 @@ module.exports = forecast = (lat, lon, location,  callback) => {
       callback('Unable to find location', undefined)
     } else {
         const data = body.current
-        callback(undefined, `As of ${moment().format('LTS')} the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
+        const time = body.current.observation_time.split(':')
+        time[0] = (parseInt(body.current.observation_time.split(':')[0]) + parseInt(body.location.utc_offset)).toString()
+        console.log(time)
+        callback(undefined, `As of ${time.toString().replace(',', ':')} the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
     }
   })
 }
