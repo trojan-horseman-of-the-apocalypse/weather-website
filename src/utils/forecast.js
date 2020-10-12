@@ -11,7 +11,7 @@ module.exports = forecast = (lat, lon, location,  callback) => {
       callback('Unable to find location', undefined)
     } else {
         const data = body.current
-        callback(undefined, `${data.weather_descriptions[0]}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
+        callback(undefined, `As of ${data.observation_time} the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
     }
   })
 }
