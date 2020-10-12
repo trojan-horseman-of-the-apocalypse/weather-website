@@ -15,7 +15,7 @@ module.exports = forecast = (lat, lon, location,  callback) => {
         const time = body.current.observation_time.split(':')
         time[0] = (parseInt(body.current.observation_time.split(':')[0]) + parseInt(body.location.utc_offset)).toString()
         console.log(time)
-        callback(undefined, `As of ${time.toString().replace(',', ':')} the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
+        callback(undefined, `As of ${time.toString().replace(',', ':')} GMT, the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
     }
   })
 }
