@@ -1,4 +1,5 @@
 const request = require('request')
+const moment = require('moment')
 
 module.exports = forecast = (lat, lon, location,  callback) => {
   request({
@@ -11,7 +12,7 @@ module.exports = forecast = (lat, lon, location,  callback) => {
       callback('Unable to find location', undefined)
     } else {
         const data = body.current
-        callback(undefined, `As of ${data.observation_time} the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
+        callback(undefined, `As of ${moment().format('LTS')} the forecast is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature} degrees out. It feels like ${data.feelslike}.`)
     }
   })
 }
