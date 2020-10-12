@@ -1,5 +1,4 @@
 const request = require('request')
-const moment = require('moment')
 
 module.exports = forecast = (lat, lon, location,  callback) => {
   request({
